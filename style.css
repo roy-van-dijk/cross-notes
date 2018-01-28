@@ -17,7 +17,7 @@ body{
 	width: 100%;
 }
 .content{
-	margin-top: 10px;
+	margin-top: 5px;
 }
 .material{
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -28,17 +28,17 @@ body{
 	user-select: none;
 }
 .tab-nav{
-	width: 114px;
+	width: 120px;
 	height: 25px;
 	line-height: 22px;
 	float: left;
-	background-color: #4295f4;
-	color: white;
-	margin-left: 3px;
-	margin-right: 3px;
+	background-color: white;
+	color: #4295f4;
+	box-shadow: none;
+	font-weight: bold;
 }
 .tab-nav.active{
-	/*border-bottom: 3px solid white;*/
+	
 }
 .button{
 	background-color: #4295f4;
@@ -141,11 +141,32 @@ body{
   left: 50%;
   width: 5px;
   height: 5px;
-  background: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
   opacity: 0;
   border-radius: 100%;
   transform: scale(1, 1) translate(-50%);
   transform-origin: 50% 50%;
+}
+.material:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+.material-bar {
+	position: absolute;
+	z-index: 10;
+	top: 30px;
+	height: 3px;
+	background: #4295f4;
+	display: block;
+	left: 0;
+	width: 120px;
+	transition: left 0.2s ease;
+}
+#tab-1.active ~ span.material-bar {
+	left: 5px;
+}
+
+#tab-2.active ~ span.material-bar {
+	left: 125px;
 }
 @keyframes ripple {
   0% {
@@ -160,7 +181,4 @@ body{
     opacity: 0;
     transform: scale(40, 40);
   }
-}
-.material:focus:not(:active)::after {
-  animation: ripple 1s ease-out;
 }
