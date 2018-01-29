@@ -16,10 +16,10 @@ document.getElementById("tab-2").addEventListener("click", function(){switchTab(
 
 // Function to add tab switch functionality to an element (linkName)
 function switchTab(linkName, tabName) {
-    // Add 'displaynone' to all tab tab-nav elements
-    for (var i = 0; i < document.getElementsByClassName("tab-content").length; i++) {
-        document.getElementsByClassName("tab-content")[i].classList.add("displaynone");
-    }
+    // Add 'displaynone' to all tab-content elements
+    // for (var i = 0; i < document.getElementsByClassName("tab-content").length; i++) {
+    //     document.getElementsByClassName("tab-content")[i].classList.add("displaynone");
+    // }
 
     // Remove 'active' class from all tab-nav elements
     for (var i = 0; i < document.getElementsByClassName("tab-nav").length; i++) {
@@ -27,9 +27,21 @@ function switchTab(linkName, tabName) {
     }
 
     // Remove 'displaynone' class from clicked tab
-    document.getElementById(tabName).classList.remove("displaynone");
+    // document.getElementById(tabName).classList.remove("displaynone");
     // Add 'active' class back to clicked tab
     document.getElementById(linkName).classList.add("active");
+
+    if (tabName == "tab-current"){
+        document.getElementById("content").classList.remove("minus-margin");
+        document.getElementById("tab-list").style.maxHeight = "224px";
+    }
+    else{
+        document.getElementById("content").classList.add("minus-margin");
+        document.getElementById("tab-list").style.maxHeight = "unset";
+    }
+    
+
+
 }
 
 // Saves current note to chrome.storage
